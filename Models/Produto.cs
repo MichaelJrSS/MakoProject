@@ -14,25 +14,21 @@ namespace Mako.Models
         [Required]
         public string Nome { get; set; }
 
-
-       
         public string Descricao { get; set; }
 
         public string Categoria { get; set; }
 
-
         [Required]
         public int Quantidade { get; set; }
 
-        [MinLength(0)]
         public int Estoque { get; set; }
 
-
         [Required]
-        [DisplayFormat(DataFormatString = "{0:C0}", ApplyFormatInEditMode = true)]
-        public float Valor { get; set; }
-        
-        public byte[] Imagens { get; set; }
+        [Display(Name = "Preco do Produto")]
+        [DisplayFormat(DataFormatString = "{0,c}")]
+        public decimal Valor { get; set; }
+
+        public string Imagens { get; set; }
 
 
 

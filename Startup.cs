@@ -28,7 +28,7 @@ namespace Mako
         {
 
             services.AddDbContext<MakoContext>(opt => opt.UseInMemoryDatabase("MakoDB"));
-            services.AddScoped<MakoContext, MakoContext>(); //gestao de dependencias sempre que for usado sera criado uma versao em memoria e depois disso ele usa o que ja ta em memoria, sem ter que criar novos bancos
+            //services.AddScoped<MakoContext, MakoContext>(); //gestao de dependencias sempre que for usado sera criado uma versao em memoria e depois disso ele usa o que ja ta em memoria, sem ter que criar novos bancos
 
             services.AddControllersWithViews();
         }
@@ -50,6 +50,8 @@ namespace Mako
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCookiePolicy();
+
 
             app.UseAuthorization();
 

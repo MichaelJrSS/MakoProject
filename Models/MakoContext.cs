@@ -17,7 +17,7 @@ namespace Mako.Models
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pagamento> Pagamentos { get; set; }
 
-         
+        public DbSet<Pedido> Pedidos { get; set; }
     }
 
 }

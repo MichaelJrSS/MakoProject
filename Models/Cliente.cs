@@ -14,6 +14,8 @@ namespace Mako.Models
 
         [Required]
         public string Nome { get; set; }
+        
+        //COLOCAR CPF FAZER VALIDADOR
 
         [Required]
         [Display(Name = "Endereço")]
@@ -27,7 +29,7 @@ namespace Mako.Models
         [EmailAddress]
         public string Email { get; set; }
 
-
+        //CORRIGIR FORMATACAO DE DATA NO FRONT
         [Display(Name = "Data de Nascimento")]
         [DisplayFormat(DataFormatString = "dd/MM/yyyy", ApplyFormatInEditMode = true)]
         public DateTime Nascimento { get; set; }

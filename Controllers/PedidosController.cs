@@ -9,22 +9,22 @@ using Mako.Models;
 
 namespace Mako.Controllers
 {
-    public class PagamentosController : Controller
+    public class PedidosController : Controller
     {
         private readonly MakoContext _context;
 
-        public PagamentosController(MakoContext context)
+        public PedidosController(MakoContext context)
         {
             _context = context;
         }
 
-        // GET: Pagamentos
+        // GET: Pedidos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Pagamentos.ToListAsync());
+            return View(await _context.Pedidos.ToListAsync());
         }
 
-        // GET: Pagamentos/Details/5
+        // GET: Pedidos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace Mako.Controllers
                 return NotFound();
             }
 
-            var pagamento = await _context.Pagamentos
+            var pedido = await _context.Pedidos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pagamento == null)
+            if (pedido == null)
             {
                 return NotFound();
             }
 
-            return View(pagamento);
+            return View(pedido);
         }
 
-        // GET: Pagamentos/Create
+        // GET: Pedidos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Pagamentos/Create
+        // POST: Pedidos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao")] Pagamento pagamento)
+        public async Task<IActionResult> Create([Bind("Id,Datapedido,ClienteId,ProdutoId,PagamentoId")] Pedido pedido)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(pagamento);
+                _context.Add(pedido);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(pagamento);
+            return View(pedido);
         }
 
-        // GET: Pagamentos/Edit/5
+        // GET: Pedidos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace Mako.Controllers
                 return NotFound();
             }
 
-            var pagamento = await _context.Pagamentos.FindAsync(id);
-            if (pagamento == null)
+            var pedido = await _context.Pedidos.FindAsync(id);
+            if (pedido == null)
             {
                 return NotFound();
             }
-            return View(pagamento);
+            return View(pedido);
         }
 
-        // POST: Pagamentos/Edit/5
+        // POST: Pedidos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao")] Pagamento pagamento)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Datapedido,ClienteId,ProdutoId,PagamentoId")] Pedido pedido)
         {
-            if (id != pagamento.Id)
+            if (id != pedido.Id)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace Mako.Controllers
             {
                 try
                 {
-                    _context.Update(pagamento);
+                    _context.Update(pedido);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PagamentoExists(pagamento.Id))
+                    if (!PedidoExists(pedido.Id))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace Mako.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(pagamento);
+            return View(pedido);
         }
 
-        // GET: Pagamentos/Delete/5
+        // GET: Pedidos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace Mako.Controllers
                 return NotFound();
             }
 
-            var pagamento = await _context.Pagamentos
+            var pedido = await _context.Pedidos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (pagamento == null)
+            if (pedido == null)
             {
                 return NotFound();
             }
 
-            return View(pagamento);
+            return View(pedido);
         }
 
-        // POST: Pagamentos/Delete/5
+        // POST: Pedidos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var pagamento = await _context.Pagamentos.FindAsync(id);
-            _context.Pagamentos.Remove(pagamento);
+            var pedido = await _context.Pedidos.FindAsync(id);
+            _context.Pedidos.Remove(pedido);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PagamentoExists(int id)
+        private bool PedidoExists(int id)
         {
-            return _context.Pagamentos.Any(e => e.Id == id);
+            return _context.Pedidos.Any(e => e.Id == id);
         }
     }
 }
