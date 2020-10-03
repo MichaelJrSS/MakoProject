@@ -25,7 +25,7 @@ namespace Mako.Models
 
         [Required]
         [Display(Name = "Preco do Produto")]
-        [DisplayFormat(DataFormatString = "{0,c}")]
+        //[DisplayFormat(DataFormatString = "{0,c}")]
         public decimal Valor { get; set; }
 
         public string Imagens { get; set; }
