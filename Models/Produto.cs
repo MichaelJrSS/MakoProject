@@ -18,14 +18,11 @@ namespace Mako.Models
 
         public string Detalhamento { get; set; }
 
-        public virtual Categoria Categoria { get; set; }
+         //criado o grupo de categoria para ter multiplos tipos
+        public virtual CategoriaProduto Categoria { get; set; }
         
         public int CategoriaId { get; set; }
-
-
-        [Required]
-        public int Quantidade { get; set; }
-
+           // apagado a quantidade pois cada faca sera unica mesmo
         public bool Estoque { get; set; }
 
         [Required]
