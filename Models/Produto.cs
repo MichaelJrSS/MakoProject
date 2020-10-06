@@ -9,26 +9,33 @@ namespace Mako.Models
     [Table("Produtos")]
     public class Produto
     {
-        public int Id { get; set; }
+        public int ProdutoId { get; set; }
 
         [Required]
         public string Nome { get; set; }
 
         public string Descricao { get; set; }
 
-        public string Categoria { get; set; }
+        public string Detalhamento { get; set; }
+
+        public virtual Categoria Categoria { get; set; }
+        
+        public int CategoriaId { get; set; }
+
 
         [Required]
         public int Quantidade { get; set; }
 
-        public int Estoque { get; set; }
+        public bool Estoque { get; set; }
 
         [Required]
         [Display(Name = "Preco do Produto")]
         //[DisplayFormat(DataFormatString = "{0,c}")]
-        public decimal Valor { get; set; }
+        public decimal Preco { get; set; }
 
-        public string Imagens { get; set; }
+        public string ImagemUrl { get; set; }
+
+        public string ImagemMiniatura { get; set; }
 
 
 
