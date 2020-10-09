@@ -9,10 +9,12 @@ namespace Mako.Models
 {
     public class MakoContext : DbContext
     {
-        public MakoContext(DbContextOptions<MakoContext> options) : base(options)
+        public MakoContext(DbContextOptions<MakoContext> options) : base(options) //definicao do banco padrao
         {
 
         }
+
+        
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pagamento> Pagamentos { get; set; }

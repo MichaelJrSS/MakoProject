@@ -27,7 +27,7 @@ namespace Mako
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<MakoContext>(opt => opt.UseInMemoryDatabase("MakoDB"));
+            services.AddDbContext<MakoContext>(opt => opt.UseInMemoryDatabase("Mako"));
             //services.AddScoped<MakoContext, MakoContext>(); //gestao de dependencias sempre que for usado sera criado uma versao em memoria e depois disso ele usa o que ja ta em memoria, sem ter que criar novos bancos
 
             services.AddControllersWithViews();
