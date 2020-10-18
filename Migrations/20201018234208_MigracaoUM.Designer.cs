@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mako.Migrations
 {
     [DbContext(typeof(MakoContext))]
-    [Migration("20201018232148_MigracaoUM")]
+    [Migration("20201018234208_MigracaoUM")]
     partial class MigracaoUM
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
