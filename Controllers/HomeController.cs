@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Mako.Models;
+
 
 namespace Mako.Controllers
 {
+    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -29,6 +30,9 @@ namespace Mako.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
+        }
     }
 }
