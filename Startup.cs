@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore.InMemory;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 namespace Mako
 {
@@ -27,7 +28,8 @@ namespace Mako
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<MakoContext>(opt => opt.UseInMemoryDatabase("Mako"));
+            services.AddDbContext<MakoContext>(options => 
+             options.UseSqlServer(Configuration.GetConnectionString("ConexaoPrincipal")));
             //services.AddScoped<MakoContext, MakoContext>(); //gestao de dependencias sempre que for usado sera criado uma versao em memoria e depois disso ele usa o que ja ta em memoria, sem ter que criar novos bancos
 
             services.AddControllersWithViews();
