@@ -12,10 +12,13 @@ namespace Mako.Models
         public int ProdutoId { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Nome { get; set; }
 
+        [StringLength(100)]
         public string Descricao { get; set; }
 
+        [StringLength(255)]
         public string Detalhamento { get; set; }
 
          //criado o grupo de categoria para ter multiplos tipos
@@ -31,8 +34,10 @@ namespace Mako.Models
         [Column(TypeName ="decimal(18,2)")]   /// esse ta ok ;)
         public decimal Preco { get; set; }
 
+        [StringLength(200)]
         public string ImagemUrl { get; set; }
 
+        [StringLength(200)]
         public string ImagemMiniatura { get; set; }
 
 

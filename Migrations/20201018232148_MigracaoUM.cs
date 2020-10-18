@@ -2,7 +2,7 @@
 
 namespace Mako.Migrations
 {
-    public partial class PrimeiraMigracao : Migration
+    public partial class MigracaoUM : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,8 +12,8 @@ namespace Mako.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoriaNome = table.Column<string>(nullable: true),
-                    Descricao = table.Column<string>(nullable: true)
+                    CategoriaNome = table.Column<string>(maxLength: 100, nullable: true),
+                    Descricao = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -26,14 +26,14 @@ namespace Mako.Migrations
                 {
                     ProdutoId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(nullable: false),
-                    Descricao = table.Column<string>(nullable: true),
-                    Detalhamento = table.Column<string>(nullable: true),
+                    Nome = table.Column<string>(maxLength: 100, nullable: false),
+                    Descricao = table.Column<string>(maxLength: 100, nullable: true),
+                    Detalhamento = table.Column<string>(maxLength: 255, nullable: true),
                     CategoriaId = table.Column<int>(nullable: false),
                     Estoque = table.Column<bool>(nullable: false),
                     Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    ImagemUrl = table.Column<string>(nullable: true),
-                    ImagemMiniatura = table.Column<string>(nullable: true)
+                    ImagemUrl = table.Column<string>(maxLength: 200, nullable: true),
+                    ImagemMiniatura = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {

@@ -12,7 +12,12 @@ namespace Mako.Models
     {
 
         public int Id { get; set; }
+
+        [StringLength(100)]
         public string CategoriaNome { get; set; }
+
+
+        [StringLength(200)]
         public string Descricao { get; set; }
 
 
