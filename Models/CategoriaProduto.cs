@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mako.Models
 {
+    [Table("CategoriaProduto")]
     public class CategoriaProduto
     {
         public int CategoriaId { get; set; }

@@ -25,9 +25,10 @@ namespace Mako.Models
            // apagado a quantidade pois cada faca sera unica mesmo
         public bool Estoque { get; set; }
 
-        [Required]
-        [Display(Name = "Preco do Produto")]
-        //[DisplayFormat(DataFormatString = "{0,c}")]
+        //[Required]
+       //[Display(Name = "Preco do Produto")]>>>>>tentativa 1
+        //[DisplayFormat(DataFormatString = "{0,c}")]>>>>>>tentativa 2
+        [Column(TypeName ="decimal(18,2)")]   /// esse ta ok ;)
         public decimal Preco { get; set; }
 
         public string ImagemUrl { get; set; }
