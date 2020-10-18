@@ -10,7 +10,8 @@ namespace Mako.Models
     [Table("CategoriaProduto")]
     public class CategoriaProduto
     {
-        public int CategoriaId { get; set; }
+
+        public int Id { get; set; }
         public string CategoriaNome { get; set; }
         public string Descricao { get; set; }
 
