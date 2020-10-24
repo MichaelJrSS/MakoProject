@@ -40,7 +40,5 @@ namespace Mako.Models
         [StringLength(200)]
         public string ImagemMiniatura { get; set; }
 
-
-
     }
 }
