@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using Mako.Repositories;
 
 namespace Mako
 {
@@ -29,6 +30,21 @@ namespace Mako
 
             services.AddDbContext<MakoContext>(options => 
              options.UseSqlServer(Configuration.GetConnectionString("ConexaoPrincipal")));
+            //conexao Principal definida na connectionstring do projeto em appsettings.json
+
+
+            //criacao do servico para cada vez que ele for requisitado no caso ele cria a interface para poder
+            //usar os contextos com baixo acomplamento para nao depender do framework e usa-lo apenas como um servico
+            // :)
+
+            //                          interface                 implementacao
+            services.AddTransient<ICategoriaProdutoRepository, CategoriaProdutoRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository> ();
+
+
+
+
+
             //services.AddScoped<MakoContext, MakoContext>(); //gestao de dependencias sempre que for usado sera criado uma versao em memoria e depois disso ele usa o que ja ta em memoria, sem ter que criar novos bancos
 
             services.AddControllersWithViews();
