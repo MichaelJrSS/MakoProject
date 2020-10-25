@@ -6,3 +6,13 @@
     <h1 class="display-4">PÁGINA PRINCIPAL</h1>
     <p>Essa é a Homepage</p>
 </div>
+<div class="row">
+
+    <p>Produtos mais populares</p>
+    @foreach (var produto in Model.ProdutosPreferidos)
+    {
+        <partial name="_ProdutosResumo" for="@produto" />
+
+    }
+
+</div>

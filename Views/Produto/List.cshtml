@@ -4,20 +4,11 @@
 
 @foreach (var produto in Model.Produtos)
 {
-    <div class="col-sm-1 col-lg-4 col-md-2">
-        <div class="thumbnail">
-            <img src="@produto.ImagemUrl"class="img-rounded" alt=""/>
-        </div>
-       
-        <div class="caption">
-            <h3 class="pull-righ"> @produto.Preco.ToString("c")</h3>
-            <h3>
-                @produto.Nome
-            </h3>
-            <p>@produto.Descricao</p>
-        </div>
-         
-        
-    </div>
+    //versao antiga
+  //@Html.Partial("_ProdutosResumo", produto);
+
+    // aspnet core versao 3.1
+    <partial name="_ProdutosResumo" for="@produto"/>
+
 
 }

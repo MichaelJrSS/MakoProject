@@ -45,6 +45,8 @@ namespace Mako
 
 
 
+            //primeira tentativa falha de contextualizacao do banco quando eu estava tentando usar o inmemory do aspnetcore
+            //mas realmente o banco em memoria nao eh uma boa para teste e nem para praticar migrations
 
             //services.AddScoped<MakoContext, MakoContext>(); //gestao de dependencias sempre que for usado sera criado uma versao em memoria e depois disso ele usa o que ja ta em memoria, sem ter que criar novos bancos
 
