@@ -28,6 +28,9 @@ namespace Mako.Models
            // apagado a quantidade pois cada faca sera unica mesmo
         public bool Estoque { get; set; }
 
+        public bool Preferido { get; set; }
+
+
         //[Required]
        //[Display(Name = "Preco do Produto")]>>>>>tentativa 1
         //[DisplayFormat(DataFormatString = "{0,c}")]>>>>>>tentativa 2
