@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mako.Repositories
 {
-    interface IProdutoRepository
+    public interface IProdutoRepository
     {
         IEnumerable<Produto> Produtos { get; }
         Produto GetProdutoById(int ProdutoId);

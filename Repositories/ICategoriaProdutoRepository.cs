@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Mako.Repositories
 {
-    interface ICategoriaProdutoRepository
+    public interface ICategoriaProdutoRepository
     {
         IEnumerable<CategoriaProduto> CategoriaProduto { get; }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mako.Repositories;
+using Mako.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mako.Controllers
@@ -24,8 +25,14 @@ namespace Mako.Controllers
             ViewData["CategoriaProduto"] = "CategoriaProduto";
 
 
-            var produtos = _produtoRepository.Produtos;
-            return View(produtos);
+            // var produtos = _produtoRepository.Produtos;
+            //return View(produtos);
+
+
+            var produtosListViewModel = new ProdutoListViewModel();
+            produtosListViewModel.Produtos = _produtoRepository.Produtos;
+            produtosListViewModel.CategoriaAtual = "Categoria Atual";
+            return View(produtosListViewModel);
         }
 
 
