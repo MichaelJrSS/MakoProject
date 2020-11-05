@@ -1,38 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Mako.Repositories;
+using Mako.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 
 namespace Mako.Controllers
 {
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IProdutoRepository _produtoRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProdutoRepository produtoRepository)
         {
-            _logger = logger;
+            _produtoRepository = produtoRepository;
         }
+        
 
         public IActionResult Index()
         {
-            return View();
+            var homeViewModel = new HomeViewModel
+            {
+                ProdutosPreferidos = _produtoRepository.Preferido
+            };
+            return View(homeViewModel);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
-        }
     }
 }

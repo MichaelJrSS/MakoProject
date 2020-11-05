@@ -49,6 +49,8 @@ namespace Mako
             // vai criar um carrinho para cada requisicao (para solicitacoes simultaneas multiplos carrinhos)
             services.AddScoped(cp => CarrinhoCompra.GetCarrinho(cp));
 
+            services.AddMemoryCache();
+            services.AddSession();
 
 
 
