@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Mako.Repositories;
+using Microsoft.AspNetCore.Http;
 
 namespace Mako
 {
@@ -39,8 +40,14 @@ namespace Mako
 
             //                          interface                 implementacao
             services.AddTransient<ICategoriaProdutoRepository, CategoriaProdutoRepository>();
+          
             services.AddTransient<IProdutoRepository, ProdutoRepository> ();
+           
+            // vai ser criado e fornecido para todas as requisicoes
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+            // vai criar um carrinho para cada requisicao (para solicitacoes simultaneas multiplos carrinhos)
+            services.AddScoped(cp => CarrinhoCompra.GetCarrinho(cp));
 
 
 
@@ -66,6 +73,9 @@ namespace Mako
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
