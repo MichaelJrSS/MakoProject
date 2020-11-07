@@ -21,6 +21,11 @@ namespace Mako.Components
         public IViewComponentResult Invoke()
         {
             var itens = _carrinhoCompra.GetCarrinhoCompraItems();
+            //adicionando um item na mao para ver se a opcao aparece no menu
+            //sempre que o carrinho estiver fazio ele nao aparece no menui
+
+           // var itens = new List<CarrinhoCompraItem>() { new CarrinhoCompraItem(), new CarrinhoCompraItem() };
+
             _carrinhoCompra.CarrinhoCompraItems = itens;
 
             var carrinhoCompraVM = new CarrinhoCompraViewModel
