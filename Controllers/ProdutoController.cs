@@ -65,9 +65,17 @@ namespace Mako.Controllers
             };
           return View(produtosListViewModel);
         }
+        
+        public IActionResult Details(int produtoId)
+        {
+            var produto = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
 
-
-
+            if(produto == null)
+            {
+                return View("~/Views/Error/Error.cshtml");
+            }
+            return View(produto);
+        }
 
     }
 }

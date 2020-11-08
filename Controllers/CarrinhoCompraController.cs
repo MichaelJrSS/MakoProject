@@ -49,10 +49,10 @@ namespace Mako.Controllers
         }
         public IActionResult RemoverItemDoCarrinhoCompra(int produtoId)
         {
-            var lancheSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
-            if (lancheSelecionado != null)
+            var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
+            if (produtoSelecionado != null)
             {
-                _carrinhoCompra.RemoverDoCarrinho(lancheSelecionado);
+                _carrinhoCompra.RemoverDoCarrinho(produtoSelecionado);
             }
             return RedirectToAction("Index");
         }

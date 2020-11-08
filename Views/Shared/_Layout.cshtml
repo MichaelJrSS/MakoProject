@@ -22,10 +22,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            @await Component.InvokeAsync("CategoriaMenu")
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
                         </li>
                         <li class="nav-item">
-                           @await Component.InvokeAsync("CarrinhoCompraResumo")
+                            @await Component.InvokeAsync("CarrinhoCompraResumo")
                         </li>
                     </ul>
                 </div>
