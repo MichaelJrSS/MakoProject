@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Mako.Models;
 using Mako.Repositories;
 using Mako.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -19,20 +20,50 @@ namespace Mako.Controllers
             _categoriaProdutoRepository = categoriaProdutoRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoria)
         {
-            ViewBag.produto = "Produtos";
-            ViewData["CategoriaProduto"] = "CategoriaProduto";
-
-
+            // ViewBag.produto = "Produtos";
+            //ViewData["CategoriaProduto"] = "CategoriaProduto";
             // var produtos = _produtoRepository.Produtos;
             //return View(produtos);
 
+            string _categoria = categoria;
+            IEnumerable<Produto> produtos;
+            string categoriaAtual = string.Empty;
 
-            var produtosListViewModel = new ProdutoListViewModel();
-            produtosListViewModel.Produtos = _produtoRepository.Produtos;
-            produtosListViewModel.CategoriaAtual = "Categoria Atual";
-            return View(produtosListViewModel);
+            if (string.IsNullOrEmpty(categoria))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
+                categoria = "Todos os Produtos";
+            }
+            else
+            {
+                if (string.Equals("Facas", _categoria, StringComparison.OrdinalIgnoreCase))
+                {
+                    produtos = _produtoRepository.Produtos.Where(p => p.Categoria.CategoriaNome.Equals("Facas")).OrderBy(p => p.Nome);
+                }
+                else
+                {
+                    produtos = _produtoRepository.Produtos.Where(p => p.Categoria.CategoriaNome.Equals("Martelos")).OrderBy(p => p.Nome);
+                }
+                //outras comparacoes podem ser definidas de acordo com as categorias que forem criadas com o tempo
+
+                categoriaAtual = _categoria;
+            }
+
+
+            //var produtosListViewModel = new ProdutoListViewModel();
+            //produtosListViewModel.Produtos = _produtoRepository.Produtos;
+            // produtosListViewModel.CategoriaAtual = "Categoria Atual";
+
+
+
+            var produtosListViewModel = new ProdutoListViewModel
+            {
+                Produtos = produtos,
+                CategoriaAtual = categoriaAtual
+            };
+          return View(produtosListViewModel);
         }
 
 

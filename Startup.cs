@@ -87,8 +87,21 @@ namespace Mako
 
             app.UseAuthorization();
 
+
+            //mapeamento das paginas
             app.UseEndpoints(endpoints =>
             {
+
+                //endpoints.MapControllerRoute(
+                  //  name: "AdminArea",
+                  //  pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+
+                endpoints.MapControllerRoute(
+                    name: "categoriafiltro",
+                    pattern: "Produto/{acation}/{categoria?}",
+                    defaults: new { Controller = "Produto", action = "List" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
