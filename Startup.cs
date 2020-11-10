@@ -42,7 +42,9 @@ namespace Mako
             services.AddTransient<ICategoriaProdutoRepository, CategoriaProdutoRepository>();
           
             services.AddTransient<IProdutoRepository, ProdutoRepository> ();
-           
+
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+
             // vai ser criado e fornecido para todas as requisicoes
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 

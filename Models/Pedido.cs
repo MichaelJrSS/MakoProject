@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Mako.Models
 {
@@ -12,6 +10,7 @@ namespace Mako.Models
     [Table("Pedidos")]
     public class Pedido
     {
+        [BindNever] //nao vinculado ao formulario
         public int PedidoId { get; set; }
 
         public List<PedidoDetalhe> PedidoItens { get; set; }
@@ -60,7 +59,7 @@ namespace Mako.Models
         public string Email { get; set; }
 
         [BindNever]
-        [ScaffoldColumn(false)]
+        [ScaffoldColumn(false)]  //campo nao visivel na view para o entity
         public decimal PedidoTotal { get; set; }
 
         //[BindNever]
