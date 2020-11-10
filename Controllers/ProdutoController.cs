@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Mako.Models;
 using Mako.Repositories;
 using Mako.ViewModels;
@@ -76,6 +75,28 @@ namespace Mako.Controllers
             }
             return View(produto);
         }
+
+        public IActionResult Search(string searchString)
+        {
+            string _searchString = searchString;
+            IEnumerable<Produto> produtos;
+            string _categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(_searchString))
+            {
+                produtos = _produtoRepository.Produtos.OrderBy(p => p.ProdutoId);
+
+            }
+            else
+            {
+                produtos = _produtoRepository.Produtos.Where(p => p.Nome.ToLower().Contains(_searchString.ToLower()));
+
+            }
+
+            return View("~/Views/Produto/List.cshtml",
+                        new ProdutoListViewModel { Produtos = produtos, CategoriaAtual = "Todos os Produtos" });
+        }
+
 
     }
 }
