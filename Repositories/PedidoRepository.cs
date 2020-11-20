@@ -13,16 +13,21 @@ namespace Mako.Repositories
             _makoContext = makoContext;
             _carrinhoCompra = carrinhoCompra;
         }
+
+
+
         public void CriarPedido(Pedido pedido)
         {
             pedido.PedidoEnviado = DateTime.Now;
+            //pedido.PedidoEntregueEm = DateTime.Now;
+
             _makoContext.Pedidos.Add(pedido);
+            _makoContext.SaveChanges();
+            var carrinhoCompraItens = _carrinhoCompra.CarrinhoCompraItems;
 
-            var carrinhoCompraItems = _carrinhoCompra.CarrinhoCompraItems;
-
-            foreach(var carrinhoItem in carrinhoCompraItems)
+            foreach (var carrinhoItem in carrinhoCompraItens)
             {
-                var pedidoDetalhe = new PedidoDetalhe()
+                var pedidoDetail = new PedidoDetalhe()
                 {
                     Quantidade = carrinhoItem.Quantidade,
                     ProdutoId = carrinhoItem.Produto.ProdutoId,
@@ -30,11 +35,10 @@ namespace Mako.Repositories
                     Preco = carrinhoItem.Produto.Preco
                 };
 
-                _makoContext.PedidoDetalhes.Add(pedidoDetalhe);
+                _makoContext.PedidoDetalhes.Add(pedidoDetail);
             }
 
             _makoContext.SaveChanges();
-
         }
     }
 }

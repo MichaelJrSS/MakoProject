@@ -10,9 +10,9 @@ namespace Mako.Models
     [Table("Pedidos")]
     public class Pedido
     {
-        [BindNever] //nao vinculado ao formulario
-        public int PedidoId { get; set; }
 
+        [BindNever]
+        public int PedidoId { get; set; }
         public List<PedidoDetalhe> PedidoItens { get; set; }
 
         [Required(ErrorMessage = "Informe o seu nome")]
@@ -52,7 +52,7 @@ namespace Mako.Models
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "Informe o email.")]
-        [StringLength(50)]
+        [StringLength(80)]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|""(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*"")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])",
             ErrorMessage = "O email não possui um formato correto")]
@@ -60,19 +60,18 @@ namespace Mako.Models
 
         [BindNever]
         [ScaffoldColumn(false)]  //campo nao visivel na view para o entity
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PedidoTotal { get; set; }
 
-        //[BindNever]
-        //[ScaffoldColumn(false)]
-        [Display(Name = "Data/Hora de Recebimento do Pedido")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        
+
+        [BindNever]
+        [ScaffoldColumn(false)]
+      //  [Display(Name = "Data/Hora de Recebimento do Pedido")]
+        //[DataType(DataType.DateTime)]
+        //[DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
-        [Display(Name = "Data/Hora da Entrega do Pedido")]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
-        public DateTime? PedidoEntregueEm { get; set; }
-
+   
     }
 }

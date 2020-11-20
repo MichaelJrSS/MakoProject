@@ -2,7 +2,7 @@
 
 namespace Mako.Repositories
 {
-    interface IPedidoRepository
+    public interface IPedidoRepository
     {
         void CriarPedido(Pedido pedido);
     }

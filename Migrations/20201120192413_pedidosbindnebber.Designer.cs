@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mako.Migrations
 {
     [DbContext(typeof(MakoContext))]
-    [Migration("20201110000659_Pedidos")]
-    partial class Pedidos
+    [Migration("20201120192413_pedidosbindnebber")]
+    partial class pedidosbindnebber
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,8 +83,8 @@ namespace Mako.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(80)")
+                        .HasMaxLength(80);
 
                     b.Property<string>("Endereco1")
                         .IsRequired()
@@ -103,9 +103,6 @@ namespace Mako.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
-
-                    b.Property<DateTime?>("PedidoEntregueEm")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("PedidoEnviado")
                         .HasColumnType("datetime2");

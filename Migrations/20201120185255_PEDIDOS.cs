@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Mako.Migrations
 {
-    public partial class Pedidos : Migration
+    public partial class PEDIDOS : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,10 +21,9 @@ namespace Mako.Migrations
                     Estado = table.Column<string>(maxLength: 10, nullable: true),
                     Cidade = table.Column<string>(maxLength: 50, nullable: true),
                     Telefone = table.Column<string>(maxLength: 25, nullable: false),
-                    Email = table.Column<string>(maxLength: 50, nullable: false),
-                    PedidoTotal = table.Column<decimal>(nullable: false),
-                    PedidoEnviado = table.Column<DateTime>(nullable: false),
-                    PedidoEntregueEm = table.Column<DateTime>(nullable: true)
+                    Email = table.Column<string>(maxLength: 80, nullable: false),
+                    PedidoTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PedidoEnviado = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,7 +39,7 @@ namespace Mako.Migrations
                     PedidoId = table.Column<int>(nullable: false),
                     ProdutoId = table.Column<int>(nullable: false),
                     Quantidade = table.Column<int>(nullable: false),
-                    Preco = table.Column<decimal>(nullable: false)
+                    Preco = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {

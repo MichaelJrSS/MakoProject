@@ -41,7 +41,7 @@ namespace Mako
             //                          interface                 implementacao
             services.AddTransient<ICategoriaProdutoRepository, CategoriaProdutoRepository>();
           
-            services.AddTransient<IProdutoRepository, ProdutoRepository> ();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
 
             services.AddTransient<IPedidoRepository, PedidoRepository>();
 
