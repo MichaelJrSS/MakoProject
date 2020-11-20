@@ -36,8 +36,16 @@ namespace Mako.Controllers
             if (ModelState.IsValid)
             {
                 _pedidoRepository.CriarPedido(pedido);
-                _carrinhoCompra.LimparCarrinho();
+                /*TempData["Cliente"] = pedido.Nome;
+                TempData["NumeroPedido"] = pedido.PedidoId;
+                TempData["DataPedido"] = pedido.PedidoEnviado;*/
+                TempData["TotalPedido"] = _carrinhoCompra.GetCarrinhoCompraTotal();
+                
+                ViewBag.CheckoutCompletoMensagem = "Seu Pedido foi criado com sucesso! ";
+                ViewBag.TotalPedido = TempData["TotalPedido"];
 
+                _carrinhoCompra.LimparCarrinho();
+                
                 //return RedirectToAction("CheckoutCompleto");
                 return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
             }
@@ -45,21 +53,30 @@ namespace Mako.Controllers
             return View(pedido);
         }
 
-       public IActionResult CheckoutCompleto()
-        {
-            ViewBag.CheckoutCompletoMensagem = "Seu Pedido foi Enviado com sucesso! ";
-            return View();
-        }
-        
-        //public IActionResult CheckoutCompleto(Pedido pedido)
-        //{
-         //   ViewBag.Cliente = TempData["Cliente"];
-           // ViewBag.DataPedido = TempData["DataPedido"];
-         //   ViewBag.NumeroPedido = TempData["NumeroPedido"];
-          //  ViewBag.TotalPedido = TempData["TotalPedido"];
-          //  ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :) ";
+                public IActionResult CheckoutCompleto()
+                {
 
-            //return View(pedido);
-        //}
+                    ViewBag.Cliente = TempData["Cliente"];
+                    ViewBag.DataPedido = TempData["DataPedido"];
+                    ViewBag.NumeroPedido = TempData["NumeroPedido"];
+                    
+                    
+                    return View();
+                }
+        
+      /* public IActionResult CheckoutCompleto(Pedido pedido)
+       {
+
+            // aqui vai a integracao com a API do MERCADO PAGO, por hora apenas mostra 
+            //um resumo do pedido que foi alimentado dentro das tabelas
+
+           ViewBag.Cliente = TempData["Cliente"];
+           ViewBag.DataPedido = TempData["DataPedido"];
+           ViewBag.NumeroPedido = TempData["NumeroPedido"];
+           ViewBag.TotalPedido = TempData["TotalPedido"];
+           ViewBag.CheckoutCompletoMensagem = "Seu Pedido foi enviado TESTE ";
+
+           return View(pedido);
+        }*/
     }
 }
