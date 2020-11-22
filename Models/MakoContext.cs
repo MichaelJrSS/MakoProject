@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mako.Models
 {
-    public class MakoContext : DbContext
+    public class MakoContext : IdentityDbContext<IdentityUser>
     {
         public MakoContext(DbContextOptions<MakoContext> options) : base(options) //definicao do banco padrao
         {

@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Mako.Repositories;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Mako
 {
@@ -56,6 +57,13 @@ namespace Mako
 
 
 
+            //adiocna o controle de identificacao dos usuarios    
+            //configuracao do contexto
+            //inclui os tokens para troca de senha e envio de emal
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<MakoContext>()
+                .AddDefaultTokenProviders();
+
             //primeira tentativa falha de contextualizacao do banco quando eu estava tentando usar o inmemory do aspnetcore
             //mas realmente o banco em memoria nao eh uma boa para teste e nem para praticar migrations
 
@@ -79,6 +87,7 @@ namespace Mako
             }
 
             app.UseSession();
+            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

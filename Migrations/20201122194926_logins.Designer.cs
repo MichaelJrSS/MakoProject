@@ -4,14 +4,16 @@ using Mako.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Mako.Migrations
 {
     [DbContext(typeof(MakoContext))]
-    partial class MakoContextModelSnapshot : ModelSnapshot
+    [Migration("20201122194926_logins")]
+    partial class logins
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
