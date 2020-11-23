@@ -104,8 +104,8 @@ namespace Mako
             {
 
                 endpoints.MapControllerRoute(
-                    name: "areaRoute",
-                   pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                    name: "AdminArea",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
 
 
                 endpoints.MapControllerRoute(
