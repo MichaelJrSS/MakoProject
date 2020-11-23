@@ -11,7 +11,7 @@ namespace Mako.Models
     public class Pedido
     {
 
-        [BindNever]
+        //[BindNever]
         public int PedidoId { get; set; }
         public List<PedidoDetalhe> PedidoItens { get; set; }
 
@@ -65,13 +65,17 @@ namespace Mako.Models
 
         
 
-        [BindNever]
-        [ScaffoldColumn(false)]
-      //  [Display(Name = "Data/Hora de Recebimento do Pedido")]
-        //[DataType(DataType.DateTime)]
-        //[DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+       // [BindNever]
+       // [ScaffoldColumn(false)]
+       [Display(Name = "Data/Hora de Recebimento do Pedido")]
+      [DataType(DataType.DateTime)]
+      [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
         public DateTime PedidoEnviado { get; set; }
 
-   
+        [Display(Name = "Data/Hora para a entrega")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}", ApplyFormatInEditMode = true)]
+        public DateTime? PedidoEntregue { get; set; }
+
     }
 }

@@ -27,4 +27,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="..\..\..\Arquivos Importantes%2528NÃO APAGAR%2529\TCC\Mako\Areas\Admin\Controllers\" />
+    <Folder Include="..\..\..\Arquivos Importantes%2528NÃO APAGAR%2529\TCC\Mako\Areas\Admin\Views\Shared\" />
+  </ItemGroup>
+
 </Project>

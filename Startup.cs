@@ -103,9 +103,9 @@ namespace Mako
             app.UseEndpoints(endpoints =>
             {
 
-                //endpoints.MapControllerRoute(
-                  //  name: "AdminArea",
-                  //  pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "areaRoute",
+                   pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
 
 
                 endpoints.MapControllerRoute(
