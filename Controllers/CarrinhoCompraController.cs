@@ -2,6 +2,7 @@
 using Mako.Models;
 using Mako.Repositories;
 using Mako.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mako.Controllers
@@ -30,7 +31,7 @@ namespace Mako.Controllers
             };
             return View(carrinhoCompraViewModel);
         }
-
+        [Authorize]
         public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
@@ -43,6 +44,8 @@ namespace Mako.Controllers
             return RedirectToAction("Index");
 
         }
+
+        [Authorize]
         public IActionResult RemoverItemDoCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);

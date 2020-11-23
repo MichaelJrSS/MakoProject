@@ -12,11 +12,11 @@ namespace Mako.Controllers
         {
 
 
-            if (User.Identity.IsAuthenticated)
-            {
+            //if (User.Identity.IsAuthenticated)            teste de validacao de autenticacao por usuaio
+            //{
                 return View();
-            }
-            return RedirectToAction("Login", "Account");
+            //}
+            //return RedirectToAction("Login", "Account");
             
         }
     }

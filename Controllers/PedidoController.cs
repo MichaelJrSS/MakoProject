@@ -1,5 +1,6 @@
 ﻿using Mako.Models;
 using Mako.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mako.Controllers
@@ -16,12 +17,14 @@ namespace Mako.Controllers
         }
 
         [HttpGet]
+        [Authorize]    //annotation para validar autenticacao, os metodos actions com essa tag nao irao ser chamados a nao ser que o usuario tenha feito login
         public IActionResult Checkout()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Checkout(Pedido pedido)
         {
             var items = _carrinhoCompra.GetCarrinhoCompraItems();

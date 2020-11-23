@@ -1,10 +1,13 @@
 ﻿using Mako.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Mako.Controllers
 {
+
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -17,6 +20,7 @@ namespace Mako.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]  // libera somente a view de login para usuarios nao autenticados o restante do controlador todo so podera ser acessado mediante autenticacao
         public IActionResult Login(string returnUrl)
         {
             return View(new LoginViewModel()
