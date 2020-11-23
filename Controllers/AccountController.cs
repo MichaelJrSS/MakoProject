@@ -55,7 +55,7 @@ namespace Mako.Controllers
         }
 
 
-
+        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
