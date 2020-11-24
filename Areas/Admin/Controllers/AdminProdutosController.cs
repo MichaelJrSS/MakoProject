@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mako.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Mako.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class AdminProdutosController : Controller
     {
         private readonly MakoContext _context;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Mako.Controllers
 {
 
-    [Authorize]
+   
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;

@@ -31,7 +31,7 @@ namespace Mako.Controllers
             };
             return View(carrinhoCompraViewModel);
         }
-        [Authorize]
+        
         public RedirectToActionResult AdicionarItemNoCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);
@@ -45,7 +45,7 @@ namespace Mako.Controllers
 
         }
 
-        [Authorize]
+       
         public IActionResult RemoverItemDoCarrinhoCompra(int produtoId)
         {
             var produtoSelecionado = _produtoRepository.Produtos.FirstOrDefault(p => p.ProdutoId == produtoId);

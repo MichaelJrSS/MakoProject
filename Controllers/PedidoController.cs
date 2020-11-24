@@ -56,7 +56,9 @@ namespace Mako.Controllers
             return View(pedido);
         }
 
-                public IActionResult CheckoutCompleto()
+
+        [Authorize]
+        public IActionResult CheckoutCompleto()
                 {
 
                     ViewBag.Cliente = TempData["Cliente"];
