@@ -36,7 +36,7 @@
                     </ul>
                     @if (User.IsInRole("Admin"))
                     {
-                        <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
                     }
                     @await Html.PartialAsync("_LoginPartial")
 

@@ -50,10 +50,12 @@
                 <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     Adicionar mais produtos<span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a asp-controller="Produto" asp-action="List" asp-route-categoria="Facas">Facas</a></li>
-                    <li><a asp-controller="Produto" asp-action="List" asp-route-categoria="Martelos">Martelos</a></li>
-                </ul>
+
+                @await Component.InvokeAsync("CategoriaMenu")
+                @* <ul class="dropdown-menu" role="menu">
+            <li><a asp-controller="Produto" asp-action="List" asp-route-categoria="Facas">Facas</a></li>
+            <li><a asp-controller="Produto" asp-action="List" asp-route-categoria="Martelos">Martelos</a></li>
+        </ul>*@
             </a>
         </div>
     </div>

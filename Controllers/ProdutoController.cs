@@ -26,7 +26,9 @@ namespace Mako.Controllers
             // var produtos = _produtoRepository.Produtos;
             //return View(produtos);
 
-            string _categoria = categoria;
+            //string _categoria = categoria;
+
+
             IEnumerable<Produto> produtos;
             string categoriaAtual = string.Empty;
 
@@ -37,17 +39,27 @@ namespace Mako.Controllers
             }
             else
             {
-                if (string.Equals("Facas", _categoria, StringComparison.OrdinalIgnoreCase))
+
+                //outras comparacoes podem ser definidas de acordo com as categorias que forem criadas com o tempo
+                /*if (string.Equals("Facas", _categoria, StringComparison.OrdinalIgnoreCase))
                 {
                     produtos = _produtoRepository.Produtos.Where(p => p.Categoria.CategoriaNome.Equals("Facas")).OrderBy(p => p.Nome);
                 }
                 else
                 {
                     produtos = _produtoRepository.Produtos.Where(p => p.Categoria.CategoriaNome.Equals("Martelos")).OrderBy(p => p.Nome);
-                }
-                //outras comparacoes podem ser definidas de acordo com as categorias que forem criadas com o tempo
+                }*/
 
-                categoriaAtual = _categoria;
+
+                //nova logica que apenas faz a busca pela categoria dentro de categorias
+                //entao pode ser criado infinitas categorias
+
+                produtos = _produtoRepository.Produtos
+                           .Where(p => p.Categoria.CategoriaNome.Equals(categoria))
+                           .OrderBy(p => p.Nome);
+
+  
+                  categoriaAtual = categoria;
             }
 
 
