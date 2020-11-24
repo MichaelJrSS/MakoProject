@@ -56,6 +56,8 @@ namespace Mako
             services.AddSession();
 
 
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Home/AccessDenied");
+
 
             //adiocna o controle de identificacao dos usuarios    
             //configuracao do contexto

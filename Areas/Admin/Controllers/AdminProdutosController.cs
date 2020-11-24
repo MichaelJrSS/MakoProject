@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Mako.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class AdminProdutosController : Controller
     {

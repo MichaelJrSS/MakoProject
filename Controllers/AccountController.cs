@@ -77,7 +77,7 @@ namespace Mako.Controllers
                     await _signInManager.SignInAsync(user, isPersistent: false);*/
 
                     //return RedirectToAction("LoggedIn", "Account");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("login", "Account");
                 }
             }
             return View(registroVM);

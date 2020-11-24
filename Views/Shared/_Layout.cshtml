@@ -28,11 +28,18 @@
                             <a class="nav-link" asp-area="" asp-controller="Contato" asp-action="Index"><b>Contato</b></a>
                         </li>
                         <li class="nav-item">
-                            @await Component.InvokeAsync("CarrinhoCompraResumo")
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @await Component.InvokeAsync("CarrinhoCompraResumo")
+                            }
                         </li>
                     </ul>
-                    
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="nav-link text-light" asp-area="Admin" asp-controller="Admin" asp-action="Index">Admin</a>
+                    }
                     @await Html.PartialAsync("_LoginPartial")
+
 
                     <form class="form-check-inline my-2 my-lg-0" asp-controller="Produto" asp-action="Search" method="get">
                         <input type="search" class="form-control mr-sm-2" placeholder="Pesquisar Produtos" name="searchString" value="@ViewData["searchString"]">

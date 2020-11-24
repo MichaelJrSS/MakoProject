@@ -25,5 +25,14 @@ namespace Mako.Controllers
             return View(homeViewModel);
         }
 
+        public ViewResult AccessDenied()
+        {
+            return View();
+
+        }
+
+
+
+
     }
 }
