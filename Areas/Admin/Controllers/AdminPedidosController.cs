@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mako.Models;
 using Microsoft.AspNetCore.Authorization;
+using Mako.ViewModels;
 
 namespace Mako.Areas.Admin.Controllers
 {
@@ -26,6 +27,40 @@ namespace Mako.Areas.Admin.Controllers
         {
             return View(await _context.Pedidos.ToListAsync());
         }
+
+        public IActionResult PedidoProdutos(int? id)
+        {
+            var pedido = _context.Pedidos
+                          .Include(pd => pd.PedidoItens)
+                          .ThenInclude(l => l.Produto)
+                          .FirstOrDefault(p => p.PedidoId == id);
+
+            if (pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNaoEncontrado", id.Value);
+            }
+
+            PedidoProdutoViewModel pedidoProdutos = new PedidoProdutoViewModel()
+            {
+                Pedido = pedido,
+                PedidoDetalhes = pedido.PedidoItens
+            };
+
+            return View(pedidoProdutos);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Admin/AdminPedidos/Details/5
         public async Task<IActionResult> Details(int? id)
